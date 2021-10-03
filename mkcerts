@@ -17,7 +17,7 @@ CRV=$WG_PREF$WG_SRV
 CRC=$WG_PREF$WG_CLI
 
 if [ -f $CRV.priv ] && [ -f $CRC.priv ]; then
-echo "Client exists"
+echo "This client alredy exists."
 exit
 fi
 

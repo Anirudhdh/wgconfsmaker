@@ -3,7 +3,7 @@ WG_PREF=vdsina
 #VPS data
 WG_SRV=vps
 WG_SRV_EXT_IP=94.123.123.1
-WG_SRV_LISTEN_PORT=52345
+WG_SRV_EXT_PORT=52345
 WG_SRV_VPN_IP=100.100.0.1
 
 #Client data
@@ -30,7 +30,7 @@ wg genkey | tee $CRV.priv | wg pubkey > $CRV.pub
 echo "!!!!!!!!!!!!!!!!!!!!!"
 read -r -d '' CONFIGFORWG_SRVER <<EOF
 [Interface]
-ListenPort = $WG_SRV_LISTEN_PORT
+ListenPort = $WG_SRV_EXT_PORT
 PrivateKey = $(cat $CRV.priv)
 Address = $WG_SRV_VPN_IP/32
 PostUp   = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE

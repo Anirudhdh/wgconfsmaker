@@ -53,7 +53,7 @@ PrivateKey = $(cat $CRC.priv)
 
 [Peer]
 AllowedIPs = 0.0.0.0/0
-Endpoint = $WG_SRV_EXT_IP:52345
+Endpoint = $WG_SRV_EXT_IP:$WG_SRV_EXT_PORT
 PersistentKeepalive = 25
 PublicKey = $(cat $CRV.pub)
 PresharedKey = $(cat $WG_PREF$WG_CLI.psk)

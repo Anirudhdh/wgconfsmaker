@@ -9,7 +9,7 @@ WG_SRV_VPN_IP=100.100.0.1
 #Client block
 WG_CLI=router
 WG_CLI_VPN_IP=100.100.0.2
-#Router LAN
+#2nd AllowedIPs for peer. Router LAN for example. 
 CLI_LAN=10.0.0.0/24
 
 #RND=$(head -30 /dev/urandom | tr -dc "0123456789" | head -c3)

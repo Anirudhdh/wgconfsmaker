@@ -35,8 +35,16 @@ PrivateKey = $(cat $CRV.priv)
 Address = $WG_SRV_VPN_IP/32
 PostUp   = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE
 PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o ens3 -j MASQUERADE
+
 #PostUp     = firewall-cmd --zone=public --add-port 32345/udp && firewall-cmd --zone=public --add-masquerade
 #PostDown   = firewall-cmd --zone=public --remove-port 32345/udp && firewall-cmd --zone=public --remove-masquerade
+
+#PostUp = ufw route allow in on wg0 out on eth0
+#PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+#PostUp = ip6tables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+#PreDown = ufw route delete allow in on wg0 out on eth0
+#PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+#PreDown = ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 EOF
 
 echo "$CONFIGFORWG_SRVER" > $CRV.conf

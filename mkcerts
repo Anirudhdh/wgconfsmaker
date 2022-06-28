@@ -4,11 +4,11 @@ WG_PREF=vdsina
 WG_SRV=vps
 WG_SRV_EXT_IP=94.123.123.1
 WG_SRV_EXT_PORT=52345
-WG_SRV_VPN_IP=100.100.0.1
+WG_SRV_VPN_IP=100.100.0.2
 
 #Client block
 WG_CLI=router
-WG_CLI_VPN_IP=100.100.0.2
+WG_CLI_VPN_IP=100.100.0.1
 #2nd AllowedIPs for peer. Router LAN for example. 
 CLI_LAN=10.0.0.0/24
 
@@ -56,7 +56,7 @@ if [ $CRV.pub ]; then
 read -r -d '' CONFIGFORWG_CLI <<EOF
 [Interface]
 Address = $WG_CLI_VPN_IP/24
-#DNS = 10.0.0.1
+DNS = $WG_SRV_VPN_IP
 PrivateKey = $(cat $CRC.priv)
 
 [Peer]

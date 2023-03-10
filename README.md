@@ -15,13 +15,12 @@ FILE /etc/network/interfaces
 
 ```auto vdsinavps
 iface vdsinavps inet static
-        address 10.1.0.3
+        address 100.100.0.1
         netmask 255.255.255.0
         pre-up vdsinavps up $IFACE
         post-down vdsinavps down $IFACE
-```
 
-```sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.ipv4.ip_forward=1
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 wg-quick up vdsinavps
 systemctl enable wg-quick@vdsinavps.service

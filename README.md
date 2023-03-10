@@ -13,7 +13,7 @@ cd /etc/wireguard```
 
 FILE /etc/network/interfaces
 
-```auto vdsinavps
+auto vdsinavps
 iface vdsinavps inet static
         address 100.100.0.1
         netmask 255.255.255.0
